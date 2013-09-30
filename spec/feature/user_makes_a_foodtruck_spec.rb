@@ -21,18 +21,30 @@ feature 'user adds a foodtruck to be reviewed', %Q{
 
     food_truck_count = FoodTruck.count
     visit new_food_truck_path
-    fill_in 'Truck Name', with: 'Chicken and Rice'
+    fill_in 'Truck name', with: 'Chicken and Rice'
     fill_in 'City', with: 'Boston'
-    select 'Truck_color', with: 'White'
-    fill_in 'Truck_size', with: 'Huge'
+    fill_in 'Truck color', with: 'White'
+    fill_in 'Truck size', with: 'Huge'
 
     fill_in 'Picture', with: 'some picture here'
     fill_in 'Description', with: 'good stuff'
     fill_in 'Food category', with: 'chicken and rice'
 
     fill_in "Description", with: 'Best place'
-    click_on 'Create Food Truck'
+    click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count + 1)
 
+    expect(page).to have_content("You made a food truck")
   end
+
+ scenario 'User fails to make a foodtruck' do
+
+    food_truck_count = FoodTruck.count
+    visit new_food_truck_path
+    click_on 'Create Food truck'
+    expect(FoodTruck.count).to eql(food_truck_count)
+
+     expect(page).to have_content("You failed to make a food truck")
+  end
+
 end
