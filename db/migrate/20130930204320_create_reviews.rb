@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text :body, null: false
       t.integer :user_id, null: false
       t.integer :truck_id, null: false
+      t.boolean :is_good?, null: false
 
       t.timestamps
     end

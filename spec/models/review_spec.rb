@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Review do
+  it { should belong_to :user }
+  it { should belong_to :truck }
+
   it { should have_valid(:user_id).when(4, 54) }
   it { should_not have_valid(:user_id).when(nil, 1.0, -34) }
 
