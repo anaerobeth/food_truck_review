@@ -17,3 +17,4 @@
 # Ignore secret file
 /.secret_keys.json
 
+/.ruby-version
