@@ -23,13 +23,9 @@ feature 'user adds a foodtruck to be reviewed', %Q{
     visit new_food_truck_path
     fill_in 'Truck name', with: 'Chicken and Rice'
     fill_in 'City', with: 'Boston'
-    fill_in 'Truck color', with: 'White'
-    fill_in 'Truck size', with: 'Huge'
 
     fill_in 'Picture', with: 'some picture here'
-    fill_in 'Description', with: 'good stuff'
     fill_in 'Food category', with: 'chicken and rice'
-
     fill_in "Description", with: 'Best place'
     click_on 'Create Food truck'
     expect(FoodTruck.count).to eql(food_truck_count + 1)
