@@ -14,15 +14,29 @@ feature 'user reviews and rates a food truck', %Q{
   # I can optionally review the truck
 
   scenario 'user provides the required information' do
-    FactoryGirl.create(:review)
+    # FactoryGirl.create(:review)
+    user = FactoryGirl.create(:user)
+    truck = FactoryGirl.create(:food_truck)
+
     prev_count = Review.count
 
-    visit new_review_path
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    visit new_food_truck_review_path(truck)
+
+
     fill_in 'Body', with: 'Totally awesome!'
     choose 'Good'
-    click_on 'Create review'
 
-    expect(prev_count).to eql(prev_count + 1)
+    click_on 'Create Review'
+
+    expect(Review.last.user_id).to eql(user.id)
+    expect(Review.last.food_truck_id).to eql(truck.id)
+
+    expect(Review.count).to eql(prev_count + 1)
     expect(page).to have_content('Review is created successfully')
 
   end
