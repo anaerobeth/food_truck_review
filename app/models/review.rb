@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
     only_integer: :true,
     greater_than_or_equal_to: 1
 
-  validates_numericality_of :truck_id,
+  validates_numericality_of :food_truck_id,
     only_integer: :true,
     greater_than_or_equal_to: 1
 
@@ -15,7 +15,6 @@ class Review < ActiveRecord::Base
   belongs_to :user,
     inverse_of: :reviews
 
-  belongs_to :truck,
+  belongs_to :food_truck,
     inverse_of: :reviews
-
 end

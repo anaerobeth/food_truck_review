@@ -16,10 +16,22 @@ ActiveRecord::Schema.define(version: 20130930204320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "food_trucks", force: true do |t|
+    t.string "truck_name",         null: false
+    t.string "truck_color"
+    t.string "truck_size"
+    t.string "city",               null: false
+    t.string "picture",            null: false
+    t.text   "description"
+    t.string "food_category",      null: false
+    t.date   "time_of_appearance"
+  end
+
   create_table "reviews", force: true do |t|
-    t.text     "body",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "truck_id",   null: false
+    t.text     "body",          null: false
+    t.integer  "user_id",       null: false
+    t.integer  "food_truck_id", null: false
+    t.boolean  "is_good",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

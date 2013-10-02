@@ -7,4 +7,20 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'mysweetpassword'
   end
+
+  factory :food_truck do
+    truck_name 'Chicken n Rice'
+    city 'Boston'
+    picture 'image1.jpg'
+    food_category 'Fast food'
+
+  end
+
+  factory :review do
+    body 'I like it!'
+    user
+    food_truck
+    is_good? true
+  end
+
 end
