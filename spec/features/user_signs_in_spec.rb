@@ -36,9 +36,9 @@ feature 'user signs in',%Q{
   scenario 'registered users who forget passwords are not signed in' do
 
     user = FactoryGirl.create(:user)
-    visit new_user_session_path
+    user.password = 'wrongpassword'
 
-    click_button 'Sign In'
+    sign_in(user)
 
     page.should have_content('Invalid email or password')
     page.should have_content('Sign In')
