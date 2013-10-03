@@ -18,10 +18,8 @@ feature 'authenicated user adds a profile photo',%Q{
     user = FactoryGirl.create(:user)
     sign_in( user )
 
-    click_link 'My Profile'
-
-    page.should have_content('Browse...')
-
+    page.should have_content('Upload a Photo')
+    page.should have_selector('input')
 
   end
 

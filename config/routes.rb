@@ -7,7 +7,7 @@ FoodTruckReview::Application.routes.draw do
     resources :reviews
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
