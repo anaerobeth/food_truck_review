@@ -24,4 +24,8 @@ class VotesController < ApplicationController
       :voted_up
       )
   end
+
+  # def has_voted? 
+    
+  # end
 end
