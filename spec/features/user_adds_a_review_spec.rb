@@ -37,6 +37,8 @@ feature 'user reviews and rates a food truck', %Q{
     expect( user.reviews.count ).to eql( user_review_count + 1 )
     expect(page).to have_content('Review is created successfully')
 
+    expect(page).to have_content(truck.name)
+
   end
 
   scenario 'user does not provide the required information' do
