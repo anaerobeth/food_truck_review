@@ -60,5 +60,13 @@ feature 'user reviews and rates a food truck', %Q{
 
   end
 
+  scenario 'User cancels making a review' do
+    truck = FactoryGirl.create(:food_truck)
 
+    visit food_truck_reviews_path(truck)
+    click_on 'Add review'
+    click_on 'Cancel'
+
+    expect(page).to have_content(truck.name)
+  end
 end
