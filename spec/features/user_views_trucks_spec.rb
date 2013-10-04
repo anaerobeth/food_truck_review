@@ -8,7 +8,9 @@ feature 'user views trucks' do
 
     visit food_trucks_path
 
-    expect( FoodTruck.all.all?{|truck| page.body.include?(truck.name)} ).to be_true
+    FoodTruck.all.each do |truck|
+      expect(page).to have_content( truck.name )
+    end
 
   end
 
