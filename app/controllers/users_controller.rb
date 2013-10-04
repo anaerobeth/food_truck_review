@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def update
 
-    if current_user.update_attributes!( user_params )
+    if params[:user] && current_user.update_attributes!( user_params )
       redirect_to user_path(current_user)
     else
       render :show
@@ -21,12 +21,3 @@ class UsersController < ApplicationController
   end
 
 end
-
-#def update
-#  @book = Book.find(params[:id])
-#  if @book.update_attributes(params[:book])
-#    redirect_to :action => 'show', :id => @book
-#  else
-#    @subjects = Subject.find(:all)
-#    render :action => 'edit'
-#  end
