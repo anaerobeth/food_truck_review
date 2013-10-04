@@ -1,10 +1,13 @@
 FoodTruckReview::Application.routes.draw do
+  get "votes/new"
+  get "vote/new"
   devise_for :users
 
   root 'pages#home'
 
   resources :food_trucks do
     resources :reviews
+    resources :votes
   end
 
   resources :users, only: [:show, :update]
