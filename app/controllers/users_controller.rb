@@ -5,10 +5,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
 
-    if params[:user] && current_user.update_attributes!( user_params )
-      redirect_to user_path(current_user)
+    if params[:user] && @user.update_attributes!( user_params )
+      redirect_to user_path(current_user), notice: 'Photo Updated'
     else
+      flash[:alert] = 'Please provide a photo'
       render :show
     end
 
