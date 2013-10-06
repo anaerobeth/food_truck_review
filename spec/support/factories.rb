@@ -9,8 +9,14 @@ FactoryGirl.define do
 
     factory :user_with_reviews do
       after(:create) do |user|
-        food_truck = FactoryGirl.create(:food_truck)
-        FactoryGirl.create(:review, user: user, food_truck: food_truck)
+        food_truck = FactoryGirl.create(:food_truck, user: user)
+        FactoryGirl.create_list(:review, 5, user: user, food_truck: food_truck)
+      end
+    end
+
+    factory :user_with_food_trucks do
+      after(:create) do |user|
+        FactoryGirl.create(:food_truck, user: user)
       end
     end
   end
@@ -33,8 +39,6 @@ FactoryGirl.define do
   end
 
   factory :vote do
-    user
-    food_truck
     voted_up true
   end
 end
