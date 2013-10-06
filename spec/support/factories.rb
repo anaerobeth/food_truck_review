@@ -6,6 +6,13 @@ FactoryGirl.define do
     user_name  'JohnSmith'
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'mysweetpassword'
+
+    factory :user_with_reviews do
+      after(:create) do |user|
+        food_truck = FactoryGirl.create(:food_truck)
+        FactoryGirl.create(:review, user: user, food_truck: food_truck)
+      end
+    end
   end
 
   factory :food_truck do
@@ -22,8 +29,6 @@ FactoryGirl.define do
 
   factory :review do
     sequence(:body){|n|"I like it!#{n}"}
-    association :user
-
     is_good true
   end
 
@@ -32,6 +37,5 @@ FactoryGirl.define do
     food_truck
     voted_up true
   end
-
 end
 
