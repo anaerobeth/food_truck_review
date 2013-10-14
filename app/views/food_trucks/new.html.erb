@@ -1,9 +1,14 @@
-<%= simple_form_for [current_user, @food_truck] do |f| %>
-  <%= f.input :name %>
-  <%= f.file_field :photo  %>
-  <%= f.input :description %>
+<div class="row">
+  <div class="large-6 columns">
+    <div class="form-padding">
+    <%= simple_form_for [current_user, @food_truck] do |f| %>
+      <h3><%= f.input :name, input_html: {style: 'width: 250px'} %></h3>
+      <%= f.file_field :photo  %>
+      <h3><%= f.input :description, input_html: {style: 'width: 250px'} %></h3>
 
-  <%= f.button :submit %>
-<% end %>
-
-<%= link_to 'Cancel', food_trucks_path %>
+      <%= f.button :submit %>
+    <% end %>
+    </div>
+    <%= link_to 'Cancel', food_trucks_path %>
+  </div>
+</div>
