@@ -25,6 +25,7 @@ feature 'user reviews and rates a food truck', %Q{
     fill_in 'Password', with: user.password
     click_button 'Sign In'
 
+    save_and_open_page
     click_on truck.name
     click_on "Add review"
 

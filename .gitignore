@@ -20,3 +20,6 @@
 # Ignore the images we upload ( since the folder they are in is specific to
 # our database )
 /public/uploads
+
+# Ignore factories.rb in spec folder (This is to resolve an issue with accessing factories locally. )
+/spec/factories.rb

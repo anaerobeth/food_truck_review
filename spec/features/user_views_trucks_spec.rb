@@ -15,11 +15,12 @@ feature 'user views trucks' do
   end
 
   scenario 'pagination setting lists five trucks at a time' do
-    FactoryGirl.create_list(:user_with_food_trucks, 15)
+    FactoryGirl.create_list(:user_with_food_trucks, 10)
 
     visit food_trucks_path
     expect(page).to have_content('Next')
     expect(page).to have_content('Last')
+    save_and_open_page
 
     expect(page).to have_content(FoodTruck.first.name)
     expect(page).to_not have_content(FoodTruck.last.name)
