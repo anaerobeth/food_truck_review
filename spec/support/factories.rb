@@ -22,9 +22,9 @@ FactoryGirl.define do
   end
 
   factory :food_truck do
-    sequence(:name){|n|"food truck #{n}"}
+    sequence(:name){|n| "food#{n} truck" }
     photo Rack::Test::UploadedFile.new(File.open(File.join( Rails.root, 'spec/support/images/image.jpg')))
-    
+
     factory :food_truck_with_reviews do
       after(:create) do |food_truck|
         FactoryGirl.create_list(:review, 5, food_truck: food_truck )
@@ -34,11 +34,7 @@ FactoryGirl.define do
   end
 
   factory :review do
-    sequence(:body){|n|"I like it!#{n}"}
+    sequence(:body){|n| "I like#{n} it! "}
   end
 
-  factory :vote do
-    voted_up true
-  end
 end
-
